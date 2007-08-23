@@ -19,7 +19,6 @@ BuildRequires:	libxt-devel
 BuildRequires:	xpm-devel
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/stable/%{name}/%{name}-%{version}.tar.bz2
 Source1:	gtkrc-default.bz2
-Icon:		gnome-libs.xpm
 URL:		http://www.gnome.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -98,7 +97,6 @@ This package contains main library for GNOME
 
 Summary:	Libraries and headers for GNOME application development
 Group:		Development/GNOME and GTK+
-Icon:		gnome-libs-devel.xpm
 Requires:	db1-devel
 Obsoletes:	%{name}-devel
 Provides:	%{name}-devel = %{version}-%{release}
