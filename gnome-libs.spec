@@ -6,11 +6,11 @@
 Summary:	Main GNOME libraries
 Name:		gnome-libs
 Version: 	1.4.2
-Release:	%mkrel 19
+Release:	%mkrel 20
 License:	LGPL
 Group:		System/Libraries
 BuildRequires:	ORBit-devel
-BuildRequires:  autoconf2.1
+BuildRequires:	autoconf2.1
 BuildRequires:	automake1.4
 BuildRequires:	db1-devel
 BuildRequires:	esound-devel
