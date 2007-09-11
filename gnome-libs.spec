@@ -6,7 +6,7 @@
 Summary:	Main GNOME libraries
 Name:		gnome-libs
 Version: 	1.4.2
-Release:	%mkrel 18
+Release:	%mkrel 19
 License:	LGPL
 Group:		System/Libraries
 BuildRequires:	ORBit-devel
@@ -25,52 +25,52 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:	ORBit
 
 # Red Hat patches
-Patch0:		RH-gnome-libs-rhsnddefs.patch.bz2
+Patch0:		RH-gnome-libs-rhsnddefs.patch
 # allow reading UTF-8 encoded .desktop
-Patch13:	gnome-libs-1.4.2-utf8menu.patch.bz2
+Patch13:	gnome-libs-1.4.2-utf8menu.patch
 
 # Mandrake patch
 #(fred c)
 # search icons first in /usr/share/icons/large, normal and small
-Patch5:		gnome-libs-1.4.2-iconspath.patch.bz2
+Patch5:		gnome-libs-1.4.2-iconspath.patch
 # (fc) 1.2.8-4mdk move gtkrc files to /usr/share/gtkrc
-Patch6:		gnome-libs-1.2.8-gtkrc.patch.bz2
+Patch6:		gnome-libs-1.2.8-gtkrc.patch
 # (fc) 1.4.2-3mdk use yelp or galeon to display help 
-Patch7:		gnome-libs-1.4.1.2.90-ghelp.patch.bz2
+Patch7:		gnome-libs-1.4.1.2.90-ghelp.patch
 # (pablo) better fontsets in gtkrc.* files
 Patch16:	gnome-libs-rclocale.bz2
 # (fc) 1.4.1.2-10mdk fix missing prototypes
-Patch18:	gnome-libs-1.4.1.3-prototypes.patch.bz2
+Patch18:	gnome-libs-1.4.1.3-prototypes.patch
 # (fc) 1.4.1.4-2mdk fix font size in gtk-xmhtml
-Patch19:	gnome-libs-1.4.1.4-fonts.patch.bz2
+Patch19:	gnome-libs-1.4.1.4-fonts.patch
 # (fc) 1.4.1.4-3mdk fix parsing of escape sequence (beep when launching vim) (Debian)
-Patch20:	gnome-libs-1.4.1.4-zvtescape.patch.bz2
+Patch20:	gnome-libs-1.4.1.4-zvtescape.patch
 # (fc) 1.4.1.4-3mdk fix numeric keypad switching (fix keypad in vim) (Debian)
-Patch21:	gnome-libs-1.4.1.4-keypad.patch.bz2
+Patch21:	gnome-libs-1.4.1.4-keypad.patch
 # (pablo) 1.4.1.4-4mdk patch to have gnome-terminal switch automatically
 # to utf-8 mode if the locale is utf-8
-Patch22:	http://noa.tm/utf-8/patches/gnome-libs-zvt-utf8-autodetect.patch.bz2
+Patch22:	http://noa.tm/utf-8/patches/gnome-libs-zvt-utf8-autodetect.patch
 # (fc) 1.4.1.7-2mdk don't add -L/usr/lib to ldflags
 # (gb) 1.4.2-12mdk update to remove unused libdir in libart-config
-Patch23:	gnome-libs-1.4.2-libdir.patch.bz2
+Patch23:	gnome-libs-1.4.2-libdir.patch
 # (fc) 1.4.2-1mdk remove -I/usr/include from cflags
-Patch24:	gnome-libs-1.4.2-includedir.patch.bz2
+Patch24:	gnome-libs-1.4.2-includedir.patch
 # (gb) 1.4.2-2mdk fix on 64-bit platforms where sizeof(int) != sizeof(size_t)
-Patch25:	gnome-libs-1.4.2-64bit-fixes.patch.bz2
+Patch25:	gnome-libs-1.4.2-64bit-fixes.patch
 # (fc) 1.4.2-3mdk disable tearoffs and detachable menubar by default
-Patch26:	gnome-libs-1.2.13-notearoffs.patch.bz2
+Patch26:	gnome-libs-1.2.13-notearoffs.patch
 # (fc) 1.4.2-3mdk fix segfault in gnome-moz-remote (rawhide)
-Patch27:	gnome-libs-1.4.1.2.90-moz-remote-fix.patch.bz2
+Patch27:	gnome-libs-1.4.1.2.90-moz-remote-fix.patch
 # (fc) 1.4.2-3mdk Disable xalf by default (rawhide)
-Patch28:	gnome-libs-1.2.13-noxalf.patch.bz2
+Patch28:	gnome-libs-1.2.13-noxalf.patch
 # (gb) 1.4.2-5mdk handle biarch struct utmp
-Patch29:	gnome-libs-1.4.2-biarch-utmp.patch.bz2
+Patch29:	gnome-libs-1.4.2-biarch-utmp.patch
 # (gb) 1.4.2-11mdk libtool fixes, don't bother with older aclocal, patch aclocal.m4 directly
-Patch30:	gnome-libs-1.4.2-libtool.patch.bz2
+Patch30:	gnome-libs-1.4.2-libtool.patch
 # (gb) 1.4.2-13mdk gcc4 fixes, aka remove duplicates
-Patch31:	gnome-libs-1.4.2-gcc4.patch.bz2
+Patch31:	gnome-libs-1.4.2-gcc4.patch
 # (peroyvind) 1.4.2-14mdk fix underquoted calls, aka get rid of aclocal warnings
-Patch32:	gnome-libs-1.4.2-fix-underquoted-calls.patch.bz2
+Patch32:	gnome-libs-1.4.2-fix-underquoted-calls.patch
 
 %description
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -98,9 +98,10 @@ This package contains main library for GNOME
 Summary:	Libraries and headers for GNOME application development
 Group:		Development/GNOME and GTK+
 Requires:	db1-devel
-Obsoletes:	%{name}-devel
+Obsoletes:	%{name}-devel < %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	libgnome-devel = %{version}-%{release}
+Provides:	gnome-devel = %{version}-%{release}
 Requires:	%{lib_gtkxmhtml} = %{version}
 Requires:	%{lib_name} = %{version}
 
@@ -121,7 +122,6 @@ Group:		System/Libraries
 
 %description -n	%{lib_gtkxmhtml}
 This package provides library for gtkxmHTML
-
 
 %prep
 %setup -q
@@ -149,9 +149,9 @@ This package provides library for gtkxmHTML
 %patch32 -p1 -b .underquoted
 
 #needed by patches 22 & 23
-WANT_AUTOCONF_2_1=1 autoconf
+autoconf-2.13
 cd libart_lgpl
-autoconf
+autoconf-2.13
 cd ..
 
 #needed by patch 6 & 24
