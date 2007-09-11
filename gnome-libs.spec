@@ -10,6 +10,7 @@ Release:	%mkrel 19
 License:	LGPL
 Group:		System/Libraries
 BuildRequires:	ORBit-devel
+BuildRequires:  autoconf2.1
 BuildRequires:	automake1.4
 BuildRequires:	db1-devel
 BuildRequires:	esound-devel
@@ -79,10 +80,9 @@ window manager for the X Window System.  The gnome-libs package
 includes libraries that are needed to run GNOME.
 
 %package -n	%{lib_name}
-
 Summary:	Libraries and headers for GNOME application development
 Group:		System/Libraries
-Requires:	%{name} >= %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
 
 %description -n	%{lib_name}
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
