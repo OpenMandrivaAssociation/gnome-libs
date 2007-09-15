@@ -30,7 +30,7 @@ Patch0:		RH-gnome-libs-rhsnddefs.patch
 # allow reading UTF-8 encoded .desktop
 Patch13:	gnome-libs-1.4.2-utf8menu.patch
 
-# Mandrake patch
+# Mandriva patch
 #(fred c)
 # search icons first in /usr/share/icons/large, normal and small
 Patch5:		gnome-libs-1.4.2-iconspath.patch
