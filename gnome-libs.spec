@@ -21,7 +21,6 @@ BuildRequires:	xpm-devel
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/stable/%{name}/%{name}-%{version}.tar.bz2
 Source1:	gtkrc-default.bz2
 URL:		http://www.gnome.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 Requires:	ORBit
 
