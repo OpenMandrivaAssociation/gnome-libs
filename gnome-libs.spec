@@ -6,7 +6,7 @@
 Summary:	Main GNOME libraries
 Name:		gnome-libs
 Version: 	1.4.2
-Release:	%mkrel 20
+Release:	%mkrel 21
 License:	LGPL
 Group:		System/Libraries
 BuildRequires:	ORBit-devel
@@ -72,6 +72,10 @@ Patch30:	gnome-libs-1.4.2-libtool.patch
 Patch31:	gnome-libs-1.4.2-gcc4.patch
 # (peroyvind) 1.4.2-14mdk fix underquoted calls, aka get rid of aclocal warnings
 Patch32:	gnome-libs-1.4.2-fix-underquoted-calls.patch
+# (anssi) fix linking order for --as-needed
+Patch33:	gnome-libs-1.4.2-linking-order.patch
+# (anssi) fix underlinking
+Patch34:	gnome-libs-1.4.2-underlinking.patch
 
 %description
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -147,6 +151,8 @@ This package provides library for gtkxmHTML
 %patch30 -p1 -b .libtool
 %patch31 -p1 -b .gcc4
 %patch32 -p1 -b .underquoted
+%patch33 -p1 -b .linking-order
+%patch34 -p1 -b .underlinking
 
 #needed by patches 22 & 23
 autoconf-2.13
