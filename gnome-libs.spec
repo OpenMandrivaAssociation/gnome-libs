@@ -6,7 +6,7 @@
 Summary:	Main GNOME libraries
 Name:		gnome-libs
 Version: 	1.4.2
-Release:	%mkrel 22
+Release:	%mkrel 23
 License:	LGPL
 Group:		System/Libraries
 BuildRequires:	ORBit-devel
