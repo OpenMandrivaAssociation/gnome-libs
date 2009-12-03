@@ -129,16 +129,16 @@ This package provides library for gtkxmHTML
 
 %prep
 %setup -q
-%patch0 -p1 -b .foo
+%patch0 -p1 -F 2 -b .foo
 %patch5 -p1 -b .icons
 %patch6 -p1 -b .gtkrc
 # better fontsets in gtkrc.* files -- pablo
 %patch16 -p1 -b .rclocale
 %patch7 -p1 -b .ghelp
 %patch13 -p1 -b .utf8
-%patch18 -p1 -b .prototypes
+%patch18 -p1 -F 2 -b .prototypes
 %patch19 -p1 -b .fonts
-%patch20 -p1 -b .zvtescape
+#%patch20 -p1 -b .zvtescape
 %patch21 -p1 -b .keypad
 %patch22 -p1 -b .zvtutf8
 %patch23 -p1 -b .libdir
@@ -151,7 +151,7 @@ This package provides library for gtkxmHTML
 %patch30 -p1 -b .libtool
 %patch31 -p1 -b .gcc4
 %patch32 -p1 -b .underquoted
-%patch33 -p1 -b .linking-order
+%patch33 -p1 -F 2 -b .linking-order
 %patch34 -p1 -b .underlinking
 
 #needed by patches 22 & 23
@@ -164,15 +164,16 @@ cd ..
 automake-1.4
 
 %build
+%define Werror_cflags %nil
 %configure --with-kde-datadir=%{_datadir} --disable-alsa --enable-prefer-db1 --disable-gtk-doc
 
 #parallel build is broken
-make
+make LIBTOOL=libtool
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%makeinstall_std
+%makeinstall_std LIBTOOL=libtool
 
 # multiarch support
 %multiarch_binaries $RPM_BUILD_ROOT%{_bindir}/gnome-config
