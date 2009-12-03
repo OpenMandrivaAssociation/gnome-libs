@@ -136,7 +136,7 @@ This package provides library for gtkxmHTML
 %patch16 -p1 -b .rclocale
 %patch7 -p1 -b .ghelp
 %patch13 -p1 -b .utf8
-%patch18 -p1 -F 2 -b .prototypes
+%patch18 -p1 -b .prototypes
 %patch19 -p1 -b .fonts
 #%patch20 -p1 -b .zvtescape
 %patch21 -p1 -b .keypad
@@ -151,7 +151,7 @@ This package provides library for gtkxmHTML
 %patch30 -p1 -b .libtool
 %patch31 -p1 -b .gcc4
 %patch32 -p1 -b .underquoted
-%patch33 -p1 -F 2 -b .linking-order
+%patch33 -p1 -b .linking-order
 %patch34 -p1 -b .underlinking
 
 #needed by patches 22 & 23
