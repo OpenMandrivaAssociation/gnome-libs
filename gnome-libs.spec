@@ -18,6 +18,7 @@ BuildRequires:	gtk+1.2-devel
 BuildRequires:	gdkimlib-devel
 BuildRequires:	libxt-devel
 BuildRequires:	xpm-devel
+BuildRequires:	libtool
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/stable/%{name}/%{name}-%{version}.tar.bz2
 Source1:	gtkrc-default.bz2
 URL:		http://www.gnome.org/
