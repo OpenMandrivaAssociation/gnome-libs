@@ -129,7 +129,7 @@ This package provides library for gtkxmHTML
 
 %prep
 %setup -q
-%patch0 -p1 -F 2 -b .foo
+%patch0 -p1 -b .foo
 %patch5 -p1 -b .icons
 %patch6 -p1 -b .gtkrc
 # better fontsets in gtkrc.* files -- pablo
