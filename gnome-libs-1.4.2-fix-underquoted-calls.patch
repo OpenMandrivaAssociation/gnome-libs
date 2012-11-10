@@ -1,0 +1,11 @@
+--- gnome-libs-1.4.2/libart_lgpl/libart.m4~	2000-04-05 10:14:15.000000000 +0200
++++ gnome-libs-1.4.2/libart_lgpl/libart.m4	2006-01-30 23:59:51.000000000 +0100
+@@ -8,7 +8,7 @@
+ dnl AM_PATH_LIBART([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
+ dnl Test for LIBART, and define LIBART_CFLAGS and LIBART_LIBS
+ dnl
+-AC_DEFUN(AM_PATH_LIBART,
++AC_DEFUN([AM_PATH_LIBART],
+ [dnl 
+ dnl Get the cflags and libraries from the libart-config script
+ dnl

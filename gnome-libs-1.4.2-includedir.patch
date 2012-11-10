@@ -1,0 +1,62 @@
+--- gnome-libs-1.4.2/libgnome/Makefile.am.orig	2002-03-27 07:51:57.000000000 +0100
++++ gnome-libs-1.4.2/libgnome/Makefile.am	2002-08-19 13:09:54.000000000 +0200
+@@ -11,7 +11,7 @@
+ 
+ INCLUDES = -I.. -I$(srcdir)/.. $(SUPPORTINCS) \
+ 	-I$(top_srcdir)/intl -I$(top_builddir)/intl \
+-	-I$(includedir) $(GLIB_CFLAGS) $(GDK_IMLIB_CFLAGS)  \
++	$(GLIB_CFLAGS) $(GDK_IMLIB_CFLAGS)  \
+ 	$(AUDIOFILE_CFLAGS) $(ESD_CFLAGS) \
+ 	-DGNOMELIBDIR=\""$(libdir)"\" \
+ 	-DGNOMEDATADIR=\""$(datadir)"\" \
+--- gnome-libs-1.4.2/libgnomeui/Makefile.am.orig	2002-08-19 13:06:14.000000000 +0200
++++ gnome-libs-1.4.2/libgnomeui/Makefile.am	2002-08-19 13:10:10.000000000 +0200
+@@ -16,7 +16,7 @@
+ 
+ INCLUDES = -I.. -I$(srcdir)/.. $(SUPPORTINCS) \
+ 	-I$(top_srcdir)/intl -I$(top_builddir)/intl \
+-	-I$(includedir) $(GDK_IMLIB_CFLAGS) \
++	$(GDK_IMLIB_CFLAGS) \
+ 	$(AUDIOFILE_CFLAGS) $(ESD_CFLAGS) \
+         -DGNOMELIBDIR=\""$(libdir)"\" \
+         -DGNOMEDATADIR=\""$(datadir)"\" \
+--- gnome-libs-1.4.2/gtk-xmhtml/Makefile.am.orig	2002-01-24 21:22:41.000000000 +0100
++++ gnome-libs-1.4.2/gtk-xmhtml/Makefile.am	2002-08-19 13:11:11.000000000 +0200
+@@ -2,7 +2,7 @@
+ 
+ libgtkxmhtmlincludedir = $(includedir)/gnome-1.0/gtk-xmhtml
+ 
+-INCLUDES = -I.. -I$(srcdir)/.. -I$(includedir) @GTK_CFLAGS@ \
++INCLUDES = -I.. -I$(srcdir)/.. @GTK_CFLAGS@ \
+            -DWITH_GTK -DDEBUG -DGNOME_LIB
+ 
+ lib_LTLIBRARIES = libgtkxmhtml.la
+--- gnome-libs-1.4.2/zvt/Makefile.am.orig	2002-03-18 22:18:10.000000000 +0100
++++ gnome-libs-1.4.2/zvt/Makefile.am	2002-08-19 13:10:22.000000000 +0200
+@@ -6,7 +6,7 @@
+ 
+ INCLUDES = -I.. -I$(srcdir)/.. $(SUPPORTINCS)		\
+ 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
+-	-I$(includedir) $(GTK_CFLAGS)  			\
++	$(GTK_CFLAGS)  			\
+ 	$(GDK_IMLIB_CFLAGS)				\
+ 	-DGNOMESBINDIR=\""$(sbindir)"\"
+ 
+--- gnome-libs-1.4.2/libgnorba/Makefile.am.orig	2002-03-27 07:48:18.000000000 +0100
++++ gnome-libs-1.4.2/libgnorba/Makefile.am	2002-08-19 13:10:54.000000000 +0200
+@@ -10,14 +10,13 @@
+ 	goad-browser.1		\
+ 	loadshlib.1		\
+ 	new-object.1
+-	
++
+ EXTRA_DIST = yes.xpm no.xpm $(man_MANS)
+ 
+ INCLUDES = 						\
+ 	-I.. 						\
+ 	-I$(srcdir)/..					\
+ 	$(SUPPORTINCS) 					\
+-	-I$(includedir) 				\
+         $(GNOME_INCLUDES)  				\
+ 	$(ORBIT_CFLAGS) 				\
+ 	$(GLIB_INCLUDES) 				\

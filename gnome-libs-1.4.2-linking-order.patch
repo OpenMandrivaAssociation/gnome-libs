@@ -1,0 +1,23 @@
+diff -p -up gnome-libs-1.4.2/configure.in.linking-order gnome-libs-1.4.2/configure.in
+--- gnome-libs-1.4.2/configure.in.linking-order	2009-12-03 10:46:03.000000000 +0100
++++ gnome-libs-1.4.2/configure.in	2009-12-03 10:46:03.000000000 +0100
+@@ -118,8 +118,8 @@ AC_CHECK_HEADERS(dlfcn.h locale.h langin
+ AC_CHECK_FUNCS(nl_langinfo)
+ 
+ AC_CACHE_CHECK([for gmodule support], ac_cv_gmodule,[
+-  save_LDFLAGS="$LDFLAGS"
+-  LDFLAGS="$LDFLAGS `glib-config --libs gmodule`"
++  save_LIBS="$LIBS"
++  LIBS="`glib-config --libs gmodule`"
+   AC_TRY_RUN([
+ #include <gmodule.h>
+ 
+@@ -127,7 +127,7 @@ int main()
+ {
+   return g_module_supported() == 0;
+ }],ac_cv_gmodule=yes,ac_cv_gmodule=no,ac_cv_gmodule=yes)
+-  LDFLAGS="$save_LDFLAGS"])
++  LIBS="$save_LIBS"])
+ if test $ac_cv_gmodule = no; then
+   AC_MSG_ERROR([Dynamic linking is not available on this platform. Some apps,
+ like panel, will not run properly.])

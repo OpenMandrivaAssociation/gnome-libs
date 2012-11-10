@@ -1,0 +1,29 @@
+--- gnome-libs-1.4.2/libgnome/gnome-dentry.c.64bit-fixes	2002-10-07 12:40:55.000000000 -0400
++++ gnome-libs-1.4.2/libgnome/gnome-dentry.c	2002-10-07 12:56:11.000000000 -0400
+@@ -892,7 +892,7 @@ get_contents_regfile (const gchar *filen
+                       struct stat *stat_buf,
+                       gint         fd,
+                       gchar      **contents,
+-                      gsize       *length)
++                      size_t      *length)
+ {
+   gchar *buf;
+   size_t bytes_read;
+@@ -943,7 +943,7 @@ get_contents_regfile (const gchar *filen
+ static gboolean
+ g_file_get_contents (const gchar *filename,
+                      gchar      **contents,
+-                     gsize       *length)
++                     size_t      *length)
+ {  
+   struct stat stat_buf;
+   gint fd;
+@@ -1176,7 +1176,7 @@ utf8tolocalechar (const char *value)
+ 	}
+ 	if (fd != (iconv_t)-1) {
+ 		gchar *pout, *pin, *str;
+-		gint len, ib, ob;
++		size_t len, ib, ob;
+ 
+ 		len = strlen (value);
+ 

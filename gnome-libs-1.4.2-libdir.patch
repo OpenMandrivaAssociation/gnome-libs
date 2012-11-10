@@ -1,0 +1,32 @@
+--- gnome-libs-1.4.2/libart_lgpl/configure.in.libdir	2001-09-20 13:49:15.000000000 -0400
++++ gnome-libs-1.4.2/libart_lgpl/configure.in	2005-03-10 08:36:53.779467992 -0500
+@@ -47,7 +47,7 @@ if test "x$GCC" = "xyes"; then
+ fi
+ changequote([,])dnl
+ 
+-LIBART_LIBDIR='-L${libdir}'
++LIBART_LIBDIR=''
+ LIBART_INCLUDEDIR='-I${includedir}/gnome-1.0'
+ LIBART_LIBS='-lart_lgpl -lm'
+ 
+--- gnome-libs-1.4.2/libart_lgpl/libart-config.in.libdir	2001-09-24 16:18:09.000000000 -0400
++++ gnome-libs-1.4.2/libart_lgpl/libart-config.in	2005-03-10 08:37:58.535530682 -0500
+@@ -4,7 +4,6 @@ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ exec_prefix_set=no
+ includedir=@includedir@
+-libdir=@libdir@
+ 
+ usage="\
+ Usage: libart-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--libs] [--cflags]"
+--- gnome-libs-1.4.2/configure.in.libdir	2005-03-10 08:36:53.776467387 -0500
++++ gnome-libs-1.4.2/configure.in	2005-03-10 08:36:53.779467992 -0500
+@@ -395,7 +395,7 @@ GTKXMHTML_LIBS="-lgtkxmhtml $LIBGTKXMHTM
+ ZVT_LIBS="-lzvt $UTIL_LIBS $GTK_LIBS"
+ 
+ dnl These definitions are expanded in make and gnome-config
+-GNOME_LIBDIR='-L${libdir}'
++GNOME_LIBDIR=''
+ GNOME_INCLUDEDIR='-I${includedir}/gnome-1.0 -DNEED_GNOMESUPPORT_H -I${pkglibdir}/include'
+ GNOME_IDLDIR='-I${datadir}/idl'
+ 

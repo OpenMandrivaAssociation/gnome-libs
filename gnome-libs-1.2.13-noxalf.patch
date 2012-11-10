@@ -1,0 +1,11 @@
+--- gnome-libs-1.2.13/libgnome/gnome-dentry.c.noxalf	Fri Jul 13 16:23:06 2001
++++ gnome-libs-1.2.13/libgnome/gnome-dentry.c	Fri Jul 13 16:24:29 2001
+@@ -624,7 +624,7 @@
+ 		no_xalf = TRUE;
+ 	
+ 	if ( ! no_xalf &&
+-	    gnome_config_get_bool("/xalf/settings/enabled=true")) {
++	    gnome_config_get_bool("/xalf/settings/enabled=false")) {
+ 		xalf = gnome_is_program_in_path ("xalf");
+ 
+ 		if (xalf != NULL) {

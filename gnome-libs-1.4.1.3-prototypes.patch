@@ -1,0 +1,50 @@
+diff -p -up gnome-libs-1.4.2/libgnomeui/gnome-dock-layout.c.prototypes gnome-libs-1.4.2/libgnomeui/gnome-dock-layout.c
+--- gnome-libs-1.4.2/libgnomeui/gnome-dock-layout.c.prototypes	2002-01-06 22:30:17.000000000 +0100
++++ gnome-libs-1.4.2/libgnomeui/gnome-dock-layout.c	2009-12-03 10:45:09.000000000 +0100
+@@ -20,6 +20,8 @@
+    Author: Ettore Perazzoli <ettore@comm2000.it>
+ */
+ 
++#include <string.h>
++
+ #include <gtk/gtk.h>
+ #include <stdio.h>
+ #include <string.h>
+diff -p -up gnome-libs-1.4.2/libgnomeui/gnome_segv.c.prototypes gnome-libs-1.4.2/libgnomeui/gnome_segv.c
+--- gnome-libs-1.4.2/libgnomeui/gnome_segv.c.prototypes	2002-04-24 16:04:17.000000000 +0200
++++ gnome-libs-1.4.2/libgnomeui/gnome_segv.c	2009-12-03 10:45:09.000000000 +0100
+@@ -6,6 +6,10 @@
+ #ifndef _POSIX_SOURCE
+ #  define _POSIX_SOURCE 1
+ #endif
++/* Needed for putenv under GNU Libc */
++#ifndef _XOPEN_SOURCE
++#  define _XOPEN_SOURCE 1
++#endif
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ 
+diff -p -up gnome-libs-1.4.2/libgnomeui/gnome-window.c.prototypes gnome-libs-1.4.2/libgnomeui/gnome-window.c
+--- gnome-libs-1.4.2/libgnomeui/gnome-window.c.prototypes	2001-06-14 17:09:43.000000000 +0200
++++ gnome-libs-1.4.2/libgnomeui/gnome-window.c	2009-12-03 10:45:09.000000000 +0100
+@@ -22,6 +22,8 @@
+  */
+ 
+ 
++#include <string.h>
++
+ #include <config.h>
+ #include <string.h>
+ #include <glib.h>
+diff -p -up gnome-libs-1.4.2/support/poptint.h.prototypes gnome-libs-1.4.2/support/poptint.h
+--- gnome-libs-1.4.2/support/poptint.h.prototypes	2000-02-26 08:30:08.000000000 +0100
++++ gnome-libs-1.4.2/support/poptint.h	2009-12-03 10:45:09.000000000 +0100
+@@ -45,7 +45,7 @@ struct poptContext_s {
+ 
+ #define	xfree(_a)	free((void *)_a)
+ 
+-#ifdef HAVE_LIBINTL_H
++#ifdef ENABLE_NLS
+ #include <libintl.h>
+ #endif
+ 

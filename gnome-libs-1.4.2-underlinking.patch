@@ -1,0 +1,58 @@
+Index: gnome-libs-1.4.2/libgnomeui/Makefile.am
+===================================================================
+--- gnome-libs-1.4.2/libgnomeui/Makefile.am
++++ gnome-libs-1.4.2/libgnomeui/Makefile.am	2008-05-28 19:25:31.000000000 +0300
+@@ -268,7 +268,9 @@
+ 	$(man_MANS)
+ 
+ libgnomeui_la_LDFLAGS = -version-info 46:1:14 -rpath $(libdir)
+-libgnomeui_la_LIBADD = $(LIBGNOMEUI_LIBS)
++libgnomeui_la_LIBADD = $(top_srcdir)/support/libgnomesupport.la \
++	$(top_builddir)/libgnome/libgnome.la \
++	$(top_builddir)/libart_lgpl/libart_lgpl.la $(LIBGNOMEUI_LIBS)
+ 
+ gnome_segv_LDADD =	\
+ 	libgnomeui.la 					\
+Index: gnome-libs-1.4.2/libgnome/Makefile.am
+===================================================================
+--- gnome-libs-1.4.2/libgnome/Makefile.am
++++ gnome-libs-1.4.2/libgnome/Makefile.am	2008-05-28 16:43:41.000000000 +0300
+@@ -87,7 +87,7 @@
+ gnome-config.o: parse-path.cP
+ 
+ libgnome_la_LDFLAGS = -version-info 36:3:4 #-rpath $(libdir)
+-libgnome_la_LIBADD = $(GLIB_LIBS) -lm
++libgnome_la_LIBADD = $(top_srcdir)/support/libgnomesupport.la $(LIBGNOME_LIBS) -lm
+ 
+ bin_PROGRAMS = dns-helper gnome-dump-metadata gnome-moz-remote \
+ 	gconfigger gnome-gen-mimedb
+Index: gnome-libs-1.4.2/libgnorba/Makefile.am
+===================================================================
+--- gnome-libs-1.4.2/libgnorba/Makefile.am
++++ gnome-libs-1.4.2/libgnorba/Makefile.am	2008-05-28 19:57:05.000000000 +0300
+@@ -80,7 +80,11 @@
+ 	Table.h
+ 
+ libgnorba_la_LDFLAGS = -version-info 28:8:1 -rpath $(libdir)
+-libgnorba_la_LIBADD = $(ORBIT_LIBS) $(GLIB_LIBS) -lm
++libgnorba_la_LIBADD = $(top_builddir)/libgnome/libgnome.la \
++	$(top_builddir)/libgnomeui/libgnomeui.la $(ORBIT_LIBS) $(GLIB_LIBS) \
++	$(GDK_IMLIB_LIBS) $(GTK_LIBS) $(X_LIBS) -lX11 -lm
++
++libgnorbagtk_la_LIBADD = $(GLIB_LIBS) $(ORBIT_LIBS) $(X_LIBS) -lX11
+ 
+ loadshlib_SOURCES = loadshlib.c
+ 
+Index: gnome-libs-1.4.2/zvt/Makefile.am
+===================================================================
+--- gnome-libs-1.4.2/zvt/Makefile.am
++++ gnome-libs-1.4.2/zvt/Makefile.am	2008-05-28 19:56:48.000000000 +0300
+@@ -23,6 +23,8 @@
+ 
+ libzvt_la_LDFLAGS = -version-info 5:0:3 -rpath $(libdir)
+ 
++libzvt_la_LIBADD = $(GTK_LIBS) $(GDK_IMLIB_LIBS) $(GLIB_LIBS) $(X_LIBS) $(UTIL_LIBS) -lX11
++
+ libzvtinclude_HEADERS =		\
+ 	lists.h			\
+ 	vt.h			\

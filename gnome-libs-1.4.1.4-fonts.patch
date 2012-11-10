@@ -1,0 +1,11 @@
+--- gnome-libs-1.4.1.4/gtk-xmhtml/XmHTMLfuncs.h.fonts	Thu Feb 14 14:39:56 2002
++++ gnome-libs-1.4.1.4/gtk-xmhtml/XmHTMLfuncs.h	Thu Feb 14 14:41:13 2002
+@@ -195,7 +195,7 @@
+ * Scalable size array: default,sub/superscript,h1,h2,h3,h4,h5,h6
+ * Fixed size array   : default,sub/superscript
+ *****/
+-#define XmHTML_DEFAULT_FONT_SCALABLE_SIZES	"14,8,24,16,16,14,14,8"
++#define XmHTML_DEFAULT_FONT_SCALABLE_SIZES	"14,8,24,18,14,12,10,8"
+ #define XmHTML_DEFAULT_FONT_FIXED_SIZES		"14,8"
+ 
+ /*****

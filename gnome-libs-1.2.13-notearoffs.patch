@@ -1,0 +1,38 @@
+--- gnome-libs-1.2.13/libgnomeui/gnome-preferences.c.notearoffs	Fri Jul 13 17:48:46 2001
++++ gnome-libs-1.2.13/libgnomeui/gnome-preferences.c	Fri Jul 13 18:27:50 2001
+@@ -36,7 +36,7 @@
+   TRUE,               /* PropertyBox has Help */
+   FALSE,              /* Use dialogs, not the statusbar */
+   FALSE,              /* Statusbar isn't interactive */
+-  TRUE,               /* Menubars are detachable */
++  FALSE,              /* Menubars are detachable */
+   TRUE,               /* Menubars are relieved */
+   TRUE,               /* Toolbars are detachable */
+   TRUE,               /* Toolbars are relieved */
+@@ -44,7 +44,7 @@
+   TRUE,               /* Toolbars show lines for separators */
+   TRUE,               /* Toolbars show labels */
+   TRUE,               /* Center dialogs over apps when possible */
+-  TRUE,               /* Menus have a tearoff bar */
++  FALSE,              /* Menus have a tearoff bar */
+   TRUE,               /* Menu items have icons in them */
+   TRUE,               /* Disable the Imlib cache */
+   GTK_WINDOW_DIALOG,  /* Dialogs are treated specially */
+@@ -268,7 +268,7 @@
+   gnome_config_pop_prefix();
+   gnome_config_push_prefix(APP);
+ 
+-  b = gnome_config_get_bool_with_default(MENUBAR_DETACHABLE_KEY"=true",
++  b = gnome_config_get_bool_with_default(MENUBAR_DETACHABLE_KEY"=false",
+ 					 NULL);
+   settings->menubar_detachable = b;
+ 
+@@ -296,7 +296,7 @@
+ 					 NULL);
+   settings->toolbar_labels = b;
+ 
+-  b = gnome_config_get_bool_with_default (MENUS_HAVE_TEAROFF_KEY"=true",
++  b = gnome_config_get_bool_with_default (MENUS_HAVE_TEAROFF_KEY"=false",
+ 					  NULL);
+   settings->menus_have_tearoff = b;
+ 

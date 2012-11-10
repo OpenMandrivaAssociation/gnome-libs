@@ -1,0 +1,47 @@
+--- gnome-libs-1.2.8/libgnomeui/gnome-init.c.orig	Thu Sep 21 13:45:06 2000
++++ gnome-libs-1.2.8/libgnomeui/gnome-init.c	Fri Jan 19 16:17:53 2001
+@@ -500,7 +500,9 @@
+ /* automagically parse all the gtkrc files for us.
+  * 
+  * Parse:
++ * $gnomedatadir/gtkrc/gtkrc
+  * $gnomedatadir/gtkrc
++ * $gnomedatadir/gtkrc/apprc
+  * $gnomedatadir/$apprc
+  * ~/.gnome/gtkrc
+  * ~/.gnome/$apprc
+@@ -539,9 +541,22 @@
+ 	
+ 	g_free(buf);
+ 	
+-	
++	/* <gnomedatadir>/gtkrc/gtkrc */
++	file = gnome_unconditional_datadir_file("gtkrc/gtkrc");
++	if (file){
++		gtk_rc_add_default_file (file);
++		g_free (file);
++	}
++
+ 	/* <gnomedatadir>/gtkrc */
+ 	file = gnome_unconditional_datadir_file("gtkrc");
++	if (file){
++		gtk_rc_add_default_file (file);
++		g_free (file);
++	}
++
++        /* <gnomedatadir>/gtkrc/<progname> */
++	file = gnome_unconditional_datadir_file(g_strconcat("gtkrc/",apprc,NULL));
+ 	if (file){
+ 		gtk_rc_add_default_file (file);
+ 		g_free (file);
+--- gnome-libs-1.2.8/libgnomeui/Makefile.am.orig	Tue Oct 24 01:14:56 2000
++++ gnome-libs-1.2.8/libgnomeui/Makefile.am	Fri Jan 19 15:28:33 2001
+@@ -245,7 +245,7 @@
+ SGML =	\
+ 	gtk-ted.sgml
+ 
+-gtkrcdir = $(datadir)
++gtkrcdir = $(datadir)/gtkrc
+ gtkrc_DATA = gtkrc gtkrc.el gtkrc.eo gtkrc.he gtkrc.hy gtkrc.ja \
+ 	gtkrc.ko gtkrc.ru gtkrc.tr gtkrc.th gtkrc.uk \
+ 	gtkrc.iso88592 gtkrc.iso88595 gtkrc.zh_CN gtkrc.zh_TW.Big5 \

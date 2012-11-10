@@ -1,0 +1,10 @@
+--- gnome-libs-1.4.1.4.old/zvt/zvtterm.c        Tue Jan 22 05:06:49 2002
++++ gnome-libs-1.4.1.4.new/zvt/zvtterm.c        Sat Feb 16 02:09:28 2002
+@@ -2744,6 +2744,7 @@
+   vx = term->vx;
+ 
+   appl_keypad = (vx->vt.mode & VTMODE_APP_KEYPAD) != 0;
++  appl_keypad = 0;
+ 
+   zvt_term_hide_pointer(term);
+   

@@ -1,0 +1,21 @@
+diff -p -up gnome-libs-1.4.2/gnome-data/gnome.soundlist.foo gnome-libs-1.4.2/gnome-data/gnome.soundlist
+--- gnome-libs-1.4.2/gnome-data/gnome.soundlist.foo	2001-08-27 02:18:49.000000000 +0200
++++ gnome-libs-1.4.2/gnome-data/gnome.soundlist	2009-12-03 10:48:02.000000000 +0100
+@@ -22,7 +22,7 @@ description[wa]=Evenmints sistinme di GN
+ description[zh_TW]=GNOME ¨t²Î¨Æ¥ó
+ 
+ [login]
+-file=login.wav
++file=
+ description=Login
+ description[ca]=Entrada al sistema
+ description[da]=Indlogning
+@@ -46,7 +46,7 @@ description[wa]=Intreye è session
+ description[zh_TW]=µn¤J
+ 
+ [logout]
+-file=logout.wav
++file=
+ description=Logout
+ description[ca]=Eixida del sistema
+ description[da]=Udlogning

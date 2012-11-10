@@ -1,0 +1,15 @@
+--- gnome-libs-1.4.1.2.90/libgnome/gnome-moz-remote.c.moz-remote-fix	2002-08-02 17:13:31.000000000 -0400
++++ gnome-libs-1.4.1.2.90/libgnome/gnome-moz-remote.c	2002-08-02 17:14:13.000000000 -0400
+@@ -118,6 +118,12 @@
+   unsigned long bytes_remain;
+   unsigned char *prop, *prop2, *prop3;
+ 
++  /* Having two code paths is dumb, just always do XQueryTree().  Also
++   * this code segfaults if no GNOME 1 WM is active.  Or with Metacity
++   * anyway.
++   */
++  return False;
++  
+   if (XGetWindowProperty(dpy, root,
+                          XA_WIN_SUPPORTING_WM_CHECK, 0, 1, False, XA_CARDINAL,
+                          &r_type, &r_format,

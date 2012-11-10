@@ -1,0 +1,66 @@
+--- gnome-libs-1.4.2/libgnome/gnome-dentry.c.icons	2002-08-07 00:57:14.000000000 +0200
++++ gnome-libs-1.4.2/libgnome/gnome-dentry.c	2002-08-19 11:59:51.000000000 +0200
+@@ -33,6 +33,21 @@
+ static gboolean file_looks_utf8 (const char *filename);
+ #endif
+ 
++static gchar *iconpaths[] = {
++  "/usr/share/icons/large",
++    "/usr/share/icons",
++    "/usr/share/icons/mini",
++    "/usr/share/icons/hicolor/48x48/apps",
++    "/usr/share/icons/locolor/48x48/apps",
++    "/usr/share/icons/hicolor/32x32/apps",
++    "/usr/share/icons/locolor/32x32/apps",
++    "/usr/share/icons/hicolor/22x22/apps",
++    "/usr/share/icons/locolor/22x22/apps",
++    "/usr/share/icons/hicolor/16x16/apps",
++    "/usr/share/icons/locolor/16x16/apps",
++    NULL
++};
++
+ /* g_free already checks if x is NULL */
+ #define free_if_empty(x) g_free (x)
+ 
+@@ -265,22 +280,25 @@
+ 					newitem->icon = NULL;
+ 				}
+ 			} else {
+-				newitem->icon = gnome_pixmap_file (icon_base);
+-				/* If it wasn't found, look in kde */
+-				if (!newitem->icon) {
+-					gchar *iconname = g_concat_dir_and_file (KDE_ICONDIR "/hicolor/32x32/apps", icon_base);
+-					if (g_file_exists (iconname))
+-						newitem->icon = iconname;
+-					else {	/* Maybe it didn't have an extension? */
+-						gchar *icon2 = g_strconcat (iconname, ".png", NULL);
+-						if (g_file_exists (icon2))
+-							newitem->icon = icon2;
+-						else
+-							g_free (icon2);
+-						g_free (iconname);
+-					}
+-				}
+-			}
++ 			  gchar * iconname;
++ 			  gint i;
++ 			  newitem->icon = NULL;
++ 			  for (i=0; iconpaths[i] && (newitem->icon == NULL); i++) {
++ 			    iconname = g_concat_dir_and_file (iconpaths[i],icon_base);
++ 			    if (g_file_exists (iconname)) 
++ 			      newitem->icon = iconname;
++ 			    else {
++			      gchar *icon2 = g_strconcat (iconname, ".png", NULL);
++			      if (g_file_exists (icon2))
++				newitem->icon = icon2;
++			      else
++				g_free (icon2);
++			      g_free (iconname);
++			    }
++ 			  }
++ 			  if (newitem->icon == NULL)
++ 			    newitem->icon = gnome_pixmap_file (icon_base);
++ 			}
+ 			g_free (icon_base);
+ 		} else
+ 			newitem->icon = icon_base;

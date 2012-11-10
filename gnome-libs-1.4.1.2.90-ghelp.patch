@@ -1,0 +1,53 @@
+--- gnome-libs-1.4.2/libgnome/gnome-url.c.ghelp	2002-01-10 23:03:17.000000000 +0100
++++ gnome-libs-1.4.2/libgnome/gnome-url.c	2003-03-14 16:17:48.000000000 +0100
+@@ -26,8 +26,11 @@
+ #include <libgnome/gnome-exec.h>
+ #include <libgnome/gnome-util.h>
+ #include "gnome-popt.h" /* poptParseArgvString */
++#include "gnome-help.h"
+ #include "gnome-url.h"
+ 
++static gchar *uri_get_file_uri_from_ghelp_uri (const gchar *path);
++
+ #define DEFAULT_HANDLER "gnome-moz-remote --newwin \"%s\""
+ 
+ static gchar *
+@@ -123,15 +126,29 @@
+ 		strncpy (protocol, url, pos - url);
+ 		protocol [pos - url] = '\0';
+ 		g_strdown (protocol);
+-		
+-		path = g_strconcat ("/Gnome/URL Handlers/", protocol, "-show", NULL);
+-		template = gnome_config_get_string_with_default (path, &def);
+-		g_free (path);
+-		if (def)
+-			template = gnome_url_default_handler (protocol);
+-		else
+-			free_template = TRUE;
+-		g_free (protocol);
++
++		if (strcmp (protocol, "ghelp") == 0) {
++			/* We no longer have any app (other than Galeon)
++			 * that can handle both ghelp: URI's and GNOME 1
++			 * help files, so do a hardcoded translation
++			 * and then run yelp.
++			 */
++			if (strstr (url, "galeon") != NULL) {
++				/* But always use Galeon for Galeon */
++				template = "galeon \"%s\"";
++			} else {
++				template = "yelp \"%s\"";
++			}
++		} else {
++			path = g_strconcat ("/Gnome/URL Handlers/", protocol, "-show", NULL);
++			template = gnome_config_get_string_with_default (path, &def);
++			g_free (path);
++			if (def)
++				template = gnome_url_default_handler (protocol);
++			else
++				free_template = TRUE;
++			g_free (protocol);
++		}
+ 	} else /* no : ? -- this shouldn't happen.  Use default handler */
+ 		template = gnome_url_default_handler (NULL);
+ 
