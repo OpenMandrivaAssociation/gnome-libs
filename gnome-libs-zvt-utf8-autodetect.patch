@@ -1,0 +1,46 @@
+--- gnome-libs-1.4.1.7/libgnome/gnome-dentry.c.utf8	2002-07-31 09:57:53.000000000 +0200
++++ gnome-libs-1.4.1.7/libgnome/gnome-dentry.c	2002-07-31 09:57:53.000000000 +0200
+--- gnome-libs-1.4.1.7/zvt/vt.c.utf8	2002-04-27 20:20:29.000000000 +0200
++++ gnome-libs-1.4.1.7/zvt/vt.c	2002-07-31 10:00:12.000000000 +0200
+@@ -41,6 +41,12 @@
+ #include "vt.h"
+ #include "subshell.h"
+ 
++#include <config.h>
++#define HAVE_LANGINFO_H 1
++#ifdef HAVE_LANGINFO_H
++#include <langinfo.h>
++#endif
++
+ /* define to 'x' to enable copious debug of this module */
+ #define d(x)
+ 
+@@ -1950,7 +1956,15 @@
+ #ifdef ZVT_UTF
+   vt->decode.utf8.shiftchar = 0;
+   /* we actually start in isolatin1 mode */
+-  vt->coding = ZVT_CODE_ISOLATIN1;
++#ifdef HAVE_NL_LANGINFO
++  if(strcmp(nl_langinfo(CODESET), "UTF-8") == 0) {
++    vt->coding = ZVT_CODE_UTF8;
++  } else {
++#endif /* HAVE_NL_LANGINFO */
++    vt->coding = ZVT_CODE_ISOLATIN1;
++#ifdef HAVE_NL_LANGINFO
++  }
++#endif /* HAVE_NL_LANGINFO */
+ #endif
+ 
+   vt->user_data = 0;
+--- gnome-libs-1.4.1.7/configure.in.utf8	2002-05-01 00:16:32.000000000 +0200
++++ gnome-libs-1.4.1.7/configure.in	2002-07-31 09:59:15.000000000 +0200
+@@ -114,7 +114,8 @@
+ 
+ AC_CHECK_LIB(m, floor)
+ 
+-AC_CHECK_HEADERS(dlfcn.h locale.h)
++AC_CHECK_HEADERS(dlfcn.h locale.h langinfo.h)
++AC_CHECK_FUNCS(nl_langinfo)
+ 
+ AC_CACHE_CHECK([for gmodule support], ac_cv_gmodule,[
+   save_LDFLAGS="$LDFLAGS"
