@@ -172,8 +172,9 @@ export CPPFLAGS="$JPEG_EXTRA_DEFINE"
 %define Werror_cflags %nil
 %configure --with-kde-datadir=%{_datadir} --disable-alsa --enable-prefer-db1 --disable-gtk-doc
 
-#parallel build is broken
-make LIBTOOL=libtool
+#don't use macro, parallel compilation is broken
+%make LIBTOOL='libtool --tag=CC' -j1
+
 
 %install
 %makeinstall_std LIBTOOL=libtool
