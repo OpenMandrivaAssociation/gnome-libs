@@ -243,7 +243,7 @@ rm -rf %{buildroot}%{_prefix}/doc  %{buildroot}%{_datadir}/doc
 %doc devel-docs/*
 %doc %{_datadir}/gtk-doc/html/*
 %{_bindir}/gnome-config
-%multiarch %{multiarch_bindir}/gnome-config
+%{multiarch_bindir}/gnome-config
 
 %{_bindir}/libart-config
 %{_bindir}/gnome-doc
