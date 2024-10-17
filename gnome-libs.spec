@@ -9,7 +9,7 @@ Version: 	1.4.2
 Release:	29
 License:	LGPL
 Group:		System/Libraries
-URL:		http://www.gnome.org/
+URL:		https://www.gnome.org/
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/stable/%{name}/%{name}-%{version}.tar.bz2
 Source1:	gtkrc-default.bz2
 BuildRequires:	autoconf2.1
