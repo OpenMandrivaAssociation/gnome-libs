@@ -12,6 +12,8 @@ Group:		System/Libraries
 URL:		https://www.gnome.org/
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/stable/%{name}/%{name}-%{version}.tar.bz2
 Source1:	gtkrc-default.bz2
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	autoconf2.1
 BuildRequires:	automake1.4
 BuildRequires:	libtool
