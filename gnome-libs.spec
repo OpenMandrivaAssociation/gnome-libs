@@ -6,7 +6,7 @@
 Summary:	Main GNOME libraries
 Name:		gnome-libs
 Version: 	1.4.2
-Release:	29
+Release:	30
 License:	LGPL
 Group:		System/Libraries
 URL:		https://www.gnome.org/
